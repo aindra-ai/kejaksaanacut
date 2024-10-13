@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Bidang Intelijen Kejaksaan Negeri Aceh Utara</title>
     <style>
         body {
@@ -17,15 +16,44 @@
             color: white;
             padding: 10px 0;
             text-align: center;
-			position: relative; /* Agar logo bisa diposisikan */
+            position: relative; /* Agar logo bisa diposisikan */
         }
-		.logo {
-            position: absolute; /* Atau bisa menggunakan float: left; */
-			top: 10px; /* Jarak dari atas header */
-			left: 20px; /* Jarak dari kiri header */
-			max-width: 100px; /* Atur lebar maksimum logo */
-			height: auto; /* Sesuaikan tinggi logo */	
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
         }
+        /* Tambahan CSS untuk responsif Tableau */
+        .tableauPlaceholder {
+            width: 100%;
+            height: 600px;
+            margin-top: 20px;
+        }
+
+        /* Animasi untuk teks bergerak */
+        .moving-text {
+            display: inline-block; /* Membuat elemen inline-block untuk transform */
+            white-space: nowrap; /* Mencegah teks membungkus ke baris berikutnya */
+            animation: moveRight 10s linear infinite; /* Nama animasi, durasi, timing, dan pengulangan */
+        }
+
+        @keyframes moveRight {
+            0% {
+                transform: translateX(-100%); /* Mulai dari luar layar di kiri */
+            }
+            50% {
+                transform: translateX(50%); /* Tengah layar */
+            }
+            100% {
+                transform: translateX(250%); /* Selesai di luar layar di kanan */
+            }
+        }
+
+        /* Styling tambahan untuk navigasi */
         nav {
             display: flex;
             justify-content: center;
@@ -48,15 +76,6 @@
             max-width: 100%;
             height: auto;
         }
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #333;
-            color: white;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
         button {
             padding: 10px 20px;
             background-color: #4CAF50;
@@ -67,11 +86,12 @@
         button:hover {
             background-color: #45a049;
         }
-        /* Tambahan CSS untuk responsif Tableau */
-        .tableauPlaceholder {
-            width: 100%;
-            height: 600px;
-            margin-top: 20px;
+
+        /* Responsif untuk layar kecil */
+        @media (max-width: 600px) {
+            .moving-text {
+                animation: moveRight 8s linear infinite; /* Perubahan kecepatan animasi untuk layar kecil */
+            }
         }
     </style>
 </head>
@@ -79,37 +99,14 @@
 
 <header>
     <h1>Bidang Intelijen Kejaksaan Negeri Aceh Utara</h1>
-	<img src="D:\8_Kejaksaan\Website\Gambar\Kejaksaan.jpg" alt="Logo" class="logo"> <!-- Tambahkan logo di sini -->
 </header>
 
 <nav>
-    <a href="#home">Home</a>
-    <a href="#about">Tentang</a>
-    <a href="#contact">Kontak</a>
     <a href="#dashboard">Dashboard</a> <!-- Link baru untuk Dashboard -->
 </nav>
 
-<section id="home">
-    <h2>Selamat Datang di Website Kami!</h2>
-    <p>Ini adalah Website Resmi Bidang Intelijen Kejaksaan Negeri Aceh Utara.</p>
-    <img src="D:\8_Kejaksaan\Website\Gambar\Kejaksaan.jpg" alt="Contoh Gambar">
-    <p>Coba tekan tombol di bawah ini untuk berinteraksi:</p>
-    <button onclick="tampilkanPesan()">Klik Saya!</button>
-</section>
-
-<section id="about">
-    <h2>Tentang Kami</h2>
-    <p>Kami adalah tim pengembang web bidang intelijen kejaksaan negeri aceh utara.</p>
-</section>
-
-<section id="contact">
-    <h2>Kontak Kami</h2>
-    <p>Hubungi kami di <a href="mailto:ragil.gusti.maulana@kejaksaan.go.id">ragil.gusti.maulana@kejaksaan.go.id</a> jika kamu memiliki pertanyaan atau ingin bekerja sama.</p>
-</section>
-
-<!-- Section baru untuk Tableau Dashboard -->
 <section id="dashboard">
-    <h2>Peta Digital Intelijen Kejaksaan Negeri Aceh Utara</h2>
+    <h2 class="moving-text">Peta Digital Intelijen Kejaksaan Negeri Aceh Utara</h2>
     <div class='tableauPlaceholder' id='viz1728802614363' style='position: relative'>
         <noscript>
             <a href='#'>
@@ -153,7 +150,7 @@
 </section>
 
 <footer>
-    &copy; 2024 Website Resmi Bidang Intelijen Kejaksaan Negeri Aceh Utara | <a href="https://www.example.com" target="_blank">Example</a>
+    &copy; 2024 Website Resmi Bidang Intelijen Kejaksaan Negeri Aceh Utara | <a href="https://wa.me/6281357135481" target="_blank">Contact Saya</a>
 </footer>
 
 <script>
