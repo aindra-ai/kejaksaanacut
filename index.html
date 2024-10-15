@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bidang Intelijen Kejaksaan Negeri Aceh Utara</title>
+    <title>Seksi Intelijen Kejaksaan Negeri Aceh Utara</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-image: url('https://imgur.com/iKvdVeQ.jpg');
+            background-image: url('https://imgur.com/iKvdVeQ.jpg'); 
             background-size: cover;
             background-repeat: no-repeat;
             margin: 0;
@@ -33,36 +33,14 @@
             color: red;
             font-weight: bold;
         }
-        .tableauPlaceholder {
-			width: 100%;
-			height: 600px;
-			margin-top: -20px; /* Mengurangi jarak atas */
-			margin-bottom: 0px; /* Tambah jarak bawah jika diperlukan */
-			border: 1px solid #333; /* Menambahkan border */
-			border-radius: 5px; /* Membuat sudut border melengkung */
-			position: relative;
-			padding: 5px; /* Menambahkan padding di dalam border */
-        }
-        .moving-text {
-            display: inline-block;
-            white-space: nowrap;
-            animation: moveRight 10s linear infinite;
-        }
-        @keyframes moveRight {
-            0% {
-                transform: translateX(-100%);
-            }
-            50% {
-                transform: translateX(50%);
-            }
-            100% {
-                transform: translateX(250%);
-            }
-        }
         nav {
-            display: flex;
             justify-content: center;
             background-color: #333;
+            transition: top 0.10s; /* Transisi halus saat menggulir */
+            position: fixed; /* Menjadikan navigasi tetap di atas */
+            width: 100%;
+            top: 60; /* Muncul di atas saat memuat */
+            z-index: 1000; /* Agar berada di atas konten lain */
         }
         nav a {
             color: white;
@@ -92,19 +70,39 @@
         button:hover {
             background-color: #45a049;
         }
-        @media (max-width: 600px) {
-            .moving-text {
-                animation: moveRight 8s linear infinite;
+		
+		section {
+			overflow: hidden; /* Menyembunyikan scroll bar */
+			margin: 20px;
+			position: relative; /* Mengatur posisi relatif */
+		}
+        .moving-text {
+            animation: moveRight 14s linear infinite; /* Mengatur durasi dan jenis animasi */
+            white-space: nowrap; /* Agar teks tidak terpotong */
+            font-size: 24px; /* Ukuran font bisa disesuaikan */
+            color: #000000; /* Warna teks bisa disesuaikan */
+            overflow: hidden; /* Menghindari teks terpotong */
+            position: relative; /* Untuk penempatan animasi */
+            left: 100%; /* Mulai dari luar kanan */
+        }
+
+        @keyframes moveRight {
+            0% {
+                left: -100%; /* Mulai dari luar layar di sebelah kanan */
+            }
+            100% {
+                left: 100%; /* Bergerak keluar layar di sebelah kiri */
             }
         }
+
         .profil {
             background-color: rgba(255, 255, 255, 0.8);
             padding: 20px;
             border-radius: 10px;
             max-width: 600px;
-            margin: 20 auto; /* Diperbaiki dari margin: 20 auto; menjadi margin: 20px auto; */
+            margin: 20 auto;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            opacity: 0;
+            opacity: 0; 
             transform: translateX(-100%);
             animation: slideIn 1s forwards;
         }
@@ -112,44 +110,44 @@
             animation: slideIn 1s forwards;
         }
         .profil img {
-            border-radius: 50%;
-            max-width: 100px;
-            margin-right: 20px;
+            border-radius: 50%; 
+            max-width: 100px; 
+            margin-right: 20px; 
         }
         .profil h3 {
-            margin: 0;
-            font-size: 24px;
+            margin: 0; 
+            font-size: 24px; 
             display: flex;
-            align-items: center; /* Menjaga gambar dan teks sejajar vertikal di tengah */
         }
         .profil p {
-            text-align: justify;
-            margin-top: 10px;
-            margin-bottom: 0;
-            font-size: 16px;
-            line-height: 1.5;
+            text-align: justify; 
+            margin-top: 10px; 
+            margin-bottom: 0; 
+            font-size: 16px; 
+            line-height: 1.5; 
         }
         @keyframes slideIn {
             0% {
-                opacity: 0;
+                opacity: 0; 
                 transform: translateX(-100%);
             }
             100% {
-                opacity: 1;
+                opacity: 1; 
                 transform: translateX(0);
             }
-        }
+        }  
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Bidang Intelijen Kejaksaan Negeri Aceh Utara</h1>
+    <h1 style="margin-bottom: 5px;">Seksi Intelijen Kejaksaan Negeri Aceh Utara</h1>
+	<p style="font-size: middle; color: black; margin: 0; font-weight: bold;">"Intelijen Kejaksaan Menuju Digitalisasi"</p>
 </header>
 
 <nav>
     <a href="#dashboard">Dashboard</a>
-    <a href="#profil">Profil Saya</a>
+    <a href="#profil">Tentang Kami</a>
 </nav>
 
 <section id="dashboard">
@@ -198,14 +196,31 @@
 
 <section id="profil">
     <div class="profil">
-        <img src="https://imgur.com/VeSU77s.jpg" alt="Foto Profil">
-        <h3>Nama: Ragil Gusti Maulana</h3>
-        <p>Jabatan: Staff Intelijen Kejaksaan Negeri Aceh Utara</p>
+        <img src="https://imgur.com/0OO6466.jpg" alt="Foto Profil">
+        <h3>Intelijen Kejaksaan Negeri Aceh Utara</h3>
         <p>
-            Saya merupakan bagian dari Seksi Intelijen Kejaksaan Negeri Aceh Utara yang bertugas dalam bidang investigasi dan pengelolaan informasi untuk membantu proses hukum di wilayah ini. Saya memiliki keahlian dalam analisis data, serta memanfaatkan teknologi untuk mendukung tugas-tugas intelijen.
+            Ini adalah Project dari Seksi Intelijen Kejaksaan Negeri Aceh Utara yang bertugas dalam bidang investigasi dan pengelolaan informasi untuk membantu proses hukum di wilayah ini. Saya memiliki keahlian dalam analisis data, serta memanfaatkan teknologi untuk mendukung tugas-tugas intelijen.
         </p>
     </div>
 </section>
+
+<script>
+    let lastScrollTop = 0; // Menyimpan posisi scroll terakhir
+
+    window.addEventListener('scroll', () => {
+        const nav = document.querySelector('nav');
+        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+        if (currentScroll > lastScrollTop) {
+            // Menggulir ke bawah
+            nav.style.top = '-60px'; // Menyembunyikan nav ke atas
+        } else {
+            // Menggulir ke atas
+            nav.style.top = '0'; // Menampilkan nav di atas
+        }
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Untuk menghindari nilai negatif
+    });
+</script>
 
 <footer>
     &copy; 2024 Website Resmi Bidang Intelijen Kejaksaan Negeri Aceh Utara | <a href="https://wa.me/6281357135481" target="_blank">Contact Saya</a>
@@ -215,23 +230,6 @@
     function tampilkanPesan() {
         window.location.href = 'https://wa.me/6281357135481';
     }
-    
-    function animateProfile() {
-        const profilElement = document.querySelector('.profil');
-        profilElement.classList.remove('animate');
-        void profilElement.offsetWidth; 
-        profilElement.classList.add('animate');
-    }
-
-    window.addEventListener('scroll', () => {
-        const profilSection = document.getElementById('profil');
-        const rect = profilSection.getBoundingClientRect();
-        
-        if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
-            animateProfile();
-        }
-    });
 </script>
-
 </body>
 </html>
