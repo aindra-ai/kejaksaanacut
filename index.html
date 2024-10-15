@@ -7,16 +7,18 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-image: url('https://imgur.com/iKvdVeQ.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
             margin: 0;
             padding: 0;
         }
         header {
-            background-color: #4CAF50;
+            background-color: rgba(76, 175, 80, 0.8);
             color: white;
             padding: 10px 0;
             text-align: center;
-            position: relative; /* Agar logo bisa diposisikan */
+            position: relative;
         }
         footer {
             text-align: center;
@@ -27,37 +29,36 @@
             width: 100%;
             bottom: 0;
         }
-		footer a {
-            color: red; /* Ubah warna tautan menjadi putih */
-            font-weight: bold; /* Menjadikan teks tautan menjadi tebal */
+        footer a {
+            color: red;
+            font-weight: bold;
         }
-        /* Tambahan CSS untuk responsif Tableau */
         .tableauPlaceholder {
-            width: 100%;
-            height: 600px;
-            margin-top: 20px;
+			width: 100%;
+			height: 600px;
+			margin-top: -20px; /* Mengurangi jarak atas */
+			margin-bottom: 0px; /* Tambah jarak bawah jika diperlukan */
+			border: 1px solid #333; /* Menambahkan border */
+			border-radius: 5px; /* Membuat sudut border melengkung */
+			position: relative;
+			padding: 5px; /* Menambahkan padding di dalam border */
         }
-
-        /* Animasi untuk teks bergerak */
         .moving-text {
-            display: inline-block; /* Membuat elemen inline-block untuk transform */
-            white-space: nowrap; /* Mencegah teks membungkus ke baris berikutnya */
-            animation: moveRight 10s linear infinite; /* Nama animasi, durasi, timing, dan pengulangan */
+            display: inline-block;
+            white-space: nowrap;
+            animation: moveRight 10s linear infinite;
         }
-
         @keyframes moveRight {
             0% {
-                transform: translateX(-100%); /* Mulai dari luar layar di kiri */
+                transform: translateX(-100%);
             }
             50% {
-                transform: translateX(50%); /* Tengah layar */
+                transform: translateX(50%);
             }
             100% {
-                transform: translateX(250%); /* Selesai di luar layar di kanan */
+                transform: translateX(250%);
             }
         }
-
-        /* Styling tambahan untuk navigasi */
         nav {
             display: flex;
             justify-content: center;
@@ -68,6 +69,7 @@
             padding: 14px 20px;
             text-decoration: none;
             text-align: center;
+            font-weight: bold;
         }
         nav a:hover {
             background-color: #ddd;
@@ -90,11 +92,51 @@
         button:hover {
             background-color: #45a049;
         }
-
-        /* Responsif untuk layar kecil */
         @media (max-width: 600px) {
             .moving-text {
-                animation: moveRight 8s linear infinite; /* Perubahan kecepatan animasi untuk layar kecil */
+                animation: moveRight 8s linear infinite;
+            }
+        }
+        .profil {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 20 auto; /* Diperbaiki dari margin: 20 auto; menjadi margin: 20px auto; */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateX(-100%);
+            animation: slideIn 1s forwards;
+        }
+        .profil.animate {
+            animation: slideIn 1s forwards;
+        }
+        .profil img {
+            border-radius: 50%;
+            max-width: 100px;
+            margin-right: 20px;
+        }
+        .profil h3 {
+            margin: 0;
+            font-size: 24px;
+            display: flex;
+            align-items: center; /* Menjaga gambar dan teks sejajar vertikal di tengah */
+        }
+        .profil p {
+            text-align: justify;
+            margin-top: 10px;
+            margin-bottom: 0;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        @keyframes slideIn {
+            0% {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
             }
         }
     </style>
@@ -106,7 +148,8 @@
 </header>
 
 <nav>
-    <a href="#dashboard">Dashboard</a> <!-- Link baru untuk Dashboard -->
+    <a href="#dashboard">Dashboard</a>
+    <a href="#profil">Profil Saya</a>
 </nav>
 
 <section id="dashboard">
@@ -153,6 +196,17 @@
     </script>
 </section>
 
+<section id="profil">
+    <div class="profil">
+        <img src="https://imgur.com/VeSU77s.jpg" alt="Foto Profil">
+        <h3>Nama: Ragil Gusti Maulana</h3>
+        <p>Jabatan: Staff Intelijen Kejaksaan Negeri Aceh Utara</p>
+        <p>
+            Saya merupakan bagian dari Seksi Intelijen Kejaksaan Negeri Aceh Utara yang bertugas dalam bidang investigasi dan pengelolaan informasi untuk membantu proses hukum di wilayah ini. Saya memiliki keahlian dalam analisis data, serta memanfaatkan teknologi untuk mendukung tugas-tugas intelijen.
+        </p>
+    </div>
+</section>
+
 <footer>
     &copy; 2024 Website Resmi Bidang Intelijen Kejaksaan Negeri Aceh Utara | <a href="https://wa.me/6281357135481" target="_blank">Contact Saya</a>
 </footer>
@@ -161,6 +215,22 @@
     function tampilkanPesan() {
         window.location.href = 'https://wa.me/6281357135481';
     }
+    
+    function animateProfile() {
+        const profilElement = document.querySelector('.profil');
+        profilElement.classList.remove('animate');
+        void profilElement.offsetWidth; 
+        profilElement.classList.add('animate');
+    }
+
+    window.addEventListener('scroll', () => {
+        const profilSection = document.getElementById('profil');
+        const rect = profilSection.getBoundingClientRect();
+        
+        if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+            animateProfile();
+        }
+    });
 </script>
 
 </body>
