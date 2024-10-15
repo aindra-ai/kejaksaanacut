@@ -70,12 +70,12 @@
         button:hover {
             background-color: #45a049;
         }
-		
-		section {
-			overflow: hidden; /* Menyembunyikan scroll bar */
-			margin: 20px;
-			position: relative; /* Mengatur posisi relatif */
-		}
+
+        section {
+            overflow: hidden; /* Menyembunyikan scroll bar */
+            margin: 20px;
+            position: relative; /* Mengatur posisi relatif */
+        }
         .moving-text {
             animation: moveRight 14s linear infinite; /* Mengatur durasi dan jenis animasi */
             white-space: nowrap; /* Agar teks tidak terpotong */
@@ -100,7 +100,7 @@
             padding: 20px;
             border-radius: 10px;
             max-width: 600px;
-            margin: 20 auto;
+            margin: 0px 0px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             opacity: 0; 
             transform: translateX(-100%);
@@ -135,14 +135,39 @@
                 opacity: 1; 
                 transform: translateX(0);
             }
-        }  
+        }
+			
+       .quote-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 50px;
+            border-radius: 50px;
+            max-width: 550px;
+            margin: 0px 0px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            opacity: 0; 
+            transform: translateX(-100%);
+            animation: slideIn 1s forwards;
+        }
+
+        .quote {
+            font-size: 1.5em; /* Ukuran font untuk kutipan */
+            color: #333333; /* Warna teks kutipan */
+            margin-bottom: 0px; /* Jarak bawah */
+            font-style: italic; /* Miring */
+        }
+
+        .author {
+            font-size: 1.3em; /* Ukuran font untuk penulis */
+            color: #555555; /* Warna teks penulis */
+            font-weight: bold; /* Tebal */
+        }
     </style>
 </head>
 <body>
 
 <header>
     <h1 style="margin-bottom: 5px;">Seksi Intelijen Kejaksaan Negeri Aceh Utara</h1>
-	<p style="font-size: middle; color: black; margin: 0; font-weight: bold;">"Intelijen Kejaksaan Menuju Digitalisasi"</p>
+    <p style="font-size: middle; color: black; margin: 0; font-weight: bold;">"Intelijen Kejaksaan Menuju Digitalisasi"</p>
 </header>
 
 <nav>
@@ -201,6 +226,13 @@
         <p>
             Ini adalah Project dari Seksi Intelijen Kejaksaan Negeri Aceh Utara yang bertugas dalam bidang investigasi dan pengelolaan informasi untuk membantu proses hukum di wilayah ini dan menganalisis data, serta memanfaatkan teknologi untuk mendukung tugas-tugas intelijen.
         </p>
+    </div>
+</section>
+
+<section id="quote" style="position: relative; bottom: 100px; right: -650px;">
+    <div class="quote-container">
+        <p class="quote">“Kebebasan dan keadilan tidak bisa dipecah-pecah untuk disesuaikan dengan kenyamanan politik.”</p>
+        <p class="author">— Coretta Scott King</p>
     </div>
 </section>
 
