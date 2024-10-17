@@ -36,11 +36,11 @@
         nav {
             justify-content: center;
             background-color: #333;
-            transition: top 0.10s; /* Transisi halus saat menggulir */
-            position: fixed; /* Menjadikan navigasi tetap di atas */
+            transition: top 0.10s;
+            position: fixed;
             width: 100%;
-            top: 60; /* Muncul di atas saat memuat */
-            z-index: 1000; /* Agar berada di atas konten lain */
+            top: 60;
+            z-index: 1000;
         }
         nav a {
             color: white;
@@ -72,26 +72,26 @@
         }
 
         section {
-            overflow: hidden; /* Menyembunyikan scroll bar */
+            overflow: hidden;
             margin: 20px;
-            position: relative; /* Mengatur posisi relatif */
+            position: relative;
         }
         .moving-text {
-            animation: moveRight 14s linear infinite; /* Mengatur durasi dan jenis animasi */
-            white-space: nowrap; /* Agar teks tidak terpotong */
-            font-size: 24px; /* Ukuran font bisa disesuaikan */
-            color: #000000; /* Warna teks bisa disesuaikan */
-            overflow: hidden; /* Menghindari teks terpotong */
-            position: relative; /* Untuk penempatan animasi */
-            left: 100%; /* Mulai dari luar kanan */
+            animation: moveRight 14s linear infinite;
+            white-space: nowrap;
+            font-size: 24px;
+            color: #000000;
+            overflow: hidden;
+            position: relative;
+            left: 100%;
         }
 
         @keyframes moveRight {
             0% {
-                left: -100%; /* Mulai dari luar layar di sebelah kanan */
+                left: -100%;
             }
             100% {
-                left: 100%; /* Bergerak keluar layar di sebelah kiri */
+                left: 100%;
             }
         }
 
@@ -106,54 +106,54 @@
             transform: translateX(-100%);
             animation: slideIn 1s forwards;
         }
-        .profil.animate {
-            animation: slideIn 1s forwards;
-        }
         .profil img {
             border-radius: 50%; 
             max-width: 100px; 
             margin-right: 20px; 
         }
         .profil h3 {
-            margin: 0; 
-            font-size: 24px; 
+            margin: 0;
+            font-size: 24px;
             display: flex;
         }
         .profil p {
-            text-align: justify; 
-            margin-top: 10px; 
-            margin-bottom: 0; 
-            font-size: 16px; 
-            line-height: 1.5; 
+            text-align: justify;
+            margin-top: 10px;
+            margin-bottom: 0;
+            font-size: 16px;
+            line-height: 1.5;
         }
         @keyframes slideIn {
             0% {
-                opacity: 0; 
+                opacity: 0;
                 transform: translateX(-100%);
             }
             100% {
-                opacity: 1; 
+                opacity: 1;
                 transform: translateX(0);
             }
         }
 			
-       .quote-container {
+        section#quote {
+            display: flex;
+            justify-content: flex-end; /* Membuat quote berada di sebelah kanan */
+            margin: 20px;
+        }
+
+        .quote-container {
             background-color: rgba(255, 255, 255, 0.8);
             padding: 50px;
             border-radius: 50px;
             max-width: 550px;
-            margin: 0px 0px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            opacity: 0; 
-            transform: translateX(-100%);
             animation: slideIn 1s forwards;
         }
 
         .quote {
             font-size: 1.5em; /* Ukuran font untuk kutipan */
             color: #333333; /* Warna teks kutipan */
-            margin-bottom: 0px; /* Jarak bawah */
             font-style: italic; /* Miring */
+            margin-bottom: 0px; /* Jarak bawah */
         }
 
         .author {
@@ -161,6 +161,20 @@
             color: #555555; /* Warna teks penulis */
             font-weight: bold; /* Tebal */
         }
+
+        @media (max-width: 768px) {
+            .quote-container {
+                max-width: 100%; /* Menyesuaikan lebar pada layar lebih kecil */
+                padding: 30px;
+            }
+            .quote {
+                font-size: 1.2em;
+            }
+            .author {
+                font-size: 1.1em;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -224,12 +238,12 @@
         <img src="https://imgur.com/0OO6466.jpg" alt="Foto Profil">
         <h3>Intelijen Kejaksaan Negeri Aceh Utara</h3>
         <p>
-            Ini adalah Project dari Seksi Intelijen Kejaksaan Negeri Aceh Utara yang bertugas dalam bidang investigasi dan pengelolaan informasi untuk membantu proses hukum di wilayah ini dan menganalisis data, serta memanfaatkan teknologi untuk mendukung tugas-tugas intelijen. Perencanaan, pelaksanaan dan pengendalian teknis kegiatan dan operasi intelijen Kejaksaan berupa penyelidikan, pengamanan dan penggalangan untuk mendukung kebijakan penegakan hukum baik preventif maupun represif mengenai upaya penyelamatan pemulihan keuangan negara yang meliputi sektor keuangan dan kekayaan negara, pengadaan barang/jasa pemerintah, pelayanan publik dan sektor lainnya.
+            Ini adalah Project dari Seksi Intelijen Kejaksaan Negeri Aceh Utara yang bertugas dalam bidang investigasi dan pengelolaan informasi untuk membantu proses hukum di wilayah ini dan menganalisis data, serta memanfaatkan teknologi untuk mendukung tugas-tugas intelijen.
         </p>
     </div>
 </section>
 
-<section id="quote" style="position: relative; bottom: 100px; right: -650px;">
+<section id="quote">
     <div class="quote-container">
         <p class="quote">“Kebebasan dan keadilan tidak bisa dipecah-pecah untuk disesuaikan dengan kenyamanan politik.”</p>
         <p class="author">— Coretta Scott King</p>
@@ -237,20 +251,18 @@
 </section>
 
 <script>
-    let lastScrollTop = 0; // Menyimpan posisi scroll terakhir
+    let lastScrollTop = 0;
 
-    window.addEventListener('scroll', () => {
-        const nav = document.querySelector('nav');
-        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+    window.addEventListener("scroll", function() {
+        let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
         if (currentScroll > lastScrollTop) {
-            // Menggulir ke bawah
-            nav.style.top = '-60px'; // Menyembunyikan nav ke atas
+            document.querySelector("nav").style.top = "-60px";
         } else {
-            // Menggulir ke atas
-            nav.style.top = '0'; // Menampilkan nav di atas
+            document.querySelector("nav").style.top = "0";
         }
-        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Untuk menghindari nilai negatif
+
+        lastScrollTop = currentScroll;
     });
 </script>
 
